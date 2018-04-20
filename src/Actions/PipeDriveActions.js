@@ -9,7 +9,7 @@ import {
 
 export const pipeDriveGetRequest = () => {
     return (dispatch) => {
-        axios.get(`https://api.pipedrive.com/v1/deals?status=all_not_deleted&start=0&api_token=54abfdfc7f6e118414a485eeda4d643425a7de36
+        axios.get(`https://api.pipedrive.com/v1/pipelines/1/deals?start=0&api_token=54abfdfc7f6e118414a485eeda4d643425a7de36
         `)
         .then(response => response)
         .then(data => {

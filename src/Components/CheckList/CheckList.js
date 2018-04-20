@@ -16,11 +16,12 @@ import {
     checkListGetOne,
     checkListPost,
 } from '../../Actions';
+
 class CheckList extends Component {
     componentDidMount() {
         this.props.checkListGetOne(1)
         this.props.pipeDriveGetRequest(),
-        this.props.pipeDriveGetOne(13)
+        this.props.pipeDriveGetOne(this.props.history.location.pathname.match(/[0-9]/gi).join(''))
         //this.props.updatePipeDriveId()
     }
 
@@ -44,11 +45,10 @@ class CheckList extends Component {
         if(!pipeDriveApiOne){return <div>Loading...</div>}
         else{ const test = pipeDriveApiOne.id 
         }
-        
     }
     
     render() {
-        console.log(this.props)
+        console.log(this.props.history.location.pathname.match(/[0-9]/gi).join(''))
         return (
             <div>
                 <h1>Workflow</h1>
@@ -244,18 +244,3 @@ export default connect(mapStateToProps, {
     checkListGetOne,
     checkListPost,
 })(CheckList);
-
-// const obj = [
-//     {   application: 'rb.applicationTwo',
-//         product_name: 'rb.product_nameTwo',
-//         cellular_tech: 'rb.cellular_techTow',
-//         cellular_bands: 'rb.cellular_bandstwo',
-//         size_viable: true,
-//         org_name: 'rb.org_name',
-//         lead_person: 'rb.lead_personblah',
-//         lead_email: 'rb.lead_email',
-//         org_person_email: false,
-//         mnda_started: true,
-//         mnda_archived: false 
-//     }
-// ]

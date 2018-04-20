@@ -9,7 +9,7 @@ CHECKLISTPOST,
 
 // Update State CheckListReducer.js
 export const updateProperty = ({ prop, value }) => {
-  console.log('updatePipeDriveId',prop, value)
+  //console.log('updatePipeDriveId',prop, value)
   return (dispatch) => {
     dispatch({
       type: UPDATEPROPERTY,
