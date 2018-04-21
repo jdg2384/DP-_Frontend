@@ -3,11 +3,13 @@ import {
   UPDATEPIPEDRIVEID,
   UPDATEPROPERTY,
   CHECKLISTGETONE,
+  DPGETONE
 } from '../Actions/types';
   
 const INITIAL_STATE = {
   //checkData: [],
-  pipedrive_id: null, 
+  dp_info:[],
+  pipedrive_id: 1, 
   application: 'Application',
   product_name: 'Product/Project Name',
   cellular_tech: '',
@@ -23,10 +25,12 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case DPGETONE:
+      return{ ...state, dp_info: action.payload};
     case UPDATEPIPEDRIVEID:
       return{ ...state, pipedrive_id: action.payload};
     case UPDATEPROPERTY:
-    //console.log('reducer',state)
+    console.log('reducer',state)
       return { ...state, [action.payload.prop]: action.payload.value };
     case CHECKLISTGETONE:
       return { ...state, checkData: action.payload  };

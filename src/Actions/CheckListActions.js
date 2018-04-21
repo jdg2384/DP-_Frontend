@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import {
+DPGETONE,
 UPDATEPIPEDRIVEID,
 UPDATEPROPERTY,
 CHECKLISTGETONE,
@@ -27,20 +28,22 @@ export const updatePipeDriveId = (value) => {
     };
 };
 
-// Get One Request
-export const checkListGetOne = (id) => {
+// Get One Request From DP-
+export const dpGetOne = (id) => {
+  console.log('dpGetOne',id)
   return (dispatch) => {
-      axios.get(`http://localhost:3000/deals/${id}
-      `)
+      axios.get('http://localhost:3000/deals/'+id)
       .then(response => response)
       .then(data => {
+        //console.log('dp dash', data.data)
           dispatch({
-            type: CHECKLISTGETONE,
+            type: DPGETONE,
             payload: data.data,
           });
       })
   }
 }
+
 // Post action
 export const checkListPost = (obj) => {
   return (dispatch) => {

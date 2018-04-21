@@ -14,11 +14,6 @@ import 'font-awesome/css/font-awesome.css';
 import App from './Components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-
-
-
-
-
 const store = createStore(reducer, {}, applyMiddleware(ReduxThunk));
 ReactDOM.render(
     
