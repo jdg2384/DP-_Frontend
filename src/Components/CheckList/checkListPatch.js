@@ -16,6 +16,7 @@ import {
     pipeDriveGetOne,
     checkListGetOne,
     checkListPost,
+    checkListPatch,
 } from '../../Actions';
 
 class CheckListPatch extends Component {
@@ -29,6 +30,7 @@ class CheckListPatch extends Component {
 
     renderList=()=>{
         let pipeDriveApiOne = this.props.one.data;
+        let dp = this.props.dp_info;
         if(!pipeDriveApiOne){return <div>Loading...</div>}
         else{
             return <div><h1>Workflow Patch</h1>
@@ -56,21 +58,21 @@ class CheckListPatch extends Component {
                             <h5>Application</h5>
                             <input type="text" className="form-control" 
                                 id="Application" 
-                                value={this.props.application} 
+                                defaultValue={dp.application} 
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'application', value: event.target.value })}
                             }/>
                             <h5>Product/Project Name</h5>
                             <input type="text" className="form-control" 
                             id="product_name" 
-                            value={this.props.product_name}
+                            defaultValue={dp.product_name}
                             onChange={(event) => { 
                             this.props.updateProperty({prop:'product_name', value: event.target.value })}
                             }/>
                             <h5>cellular Tech</h5>
                             <select className="form-control"
                             id="cellular_tech" 
-                            value={this.props.cellular_tech}
+                            defaultValue={dp.cellular_tech}
                             onChange={(event) => { 
                             this.props.updateProperty({prop:'cellular_tech', value: event.target.value })}
                             }>
@@ -85,7 +87,7 @@ class CheckListPatch extends Component {
                             <h5>Cellular Bands</h5>
                             <select className="form-control"
                             id="cellular_bands" 
-                            value={this.props.cellular_bands}
+                            defaultValue={dp.cellular_bands}
                             onChange={(event) => { 
                             this.props.updateProperty({prop:'cellular_bands', value: event.target.value })}
                             }>
@@ -98,10 +100,10 @@ class CheckListPatch extends Component {
                             <br/><br/>
                             <input type="checkbox" 
                                 id="cellular_bands"
-                                blah={this.props.size_viable ? "checked" : ""}
+                                blah={dp.size_viable ? "checked" : ""}
                                 onClick={(event) => { 
                                 this.props.updateProperty({prop:'size_viable', value: event.target.value })}}
-                                value={this.props.size_viable ? false : true}
+                                //value={dp.size_viable ? false : true}
                             />
 
                             <strong> Size Viable for Chosen Bands</strong>
@@ -111,14 +113,14 @@ class CheckListPatch extends Component {
                             <h5>Organization Name</h5>
                             <input type="text" className="form-control" 
                                 id="org_name" 
-                                value={this.props.org_name}
+                                defaultValue={dp.org_name}
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'org_name', value: event.target.value })}
                             }/>
                             <h5>Lead Person Name</h5>
                             <input type="text" className="form-control" 
                                 id="lead_person"
-                                value={this.props.lead_person}
+                                defaultValue={dp.lead_person}
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'lead_person', value: event.target.value })}
                             } 
@@ -126,7 +128,7 @@ class CheckListPatch extends Component {
                             <h5>Lead Person Email</h5>
                             <input type="email" className="form-control" 
                                 id="lead_email" 
-                                value={this.props.lead_email}
+                                defaultValue={dp.lead_email}
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'lead_email', value: event.target.value })}
                             }/>
@@ -136,7 +138,7 @@ class CheckListPatch extends Component {
                                 test={this.props.org_person_email ? "checked" : ""}
                                 onClick={(event) => { 
                                 this.props.updateProperty({prop:'org_person_email', value: event.target.value })}}
-                                value={this.props.org_person_email ? false : true}
+                                defaultValue={dp.org_person_email ? false : true}
                             />
                             <strong>  Organization, Lead Person, and Email are Correct. Ready to Start MNDA Process.</strong>
                             <br/><br/>
@@ -151,10 +153,10 @@ class CheckListPatch extends Component {
                             
                             <input type="checkbox" 
                                 id="cmnda_started"
-                                blah={this.props.mnda_started ? "checked" : ""}
+                                blah={dp.mnda_started ? "checked" : ""}
                                 onClick={(event) => { 
                                 this.props.updateProperty({prop:'mnda_started', value: event.target.value })}}
-                                value={this.props.mnda_started ? false : true}
+                                defaultValue={dp.mnda_started ? false : true}
                             />
                             <strong>  MNDA Process Has Been Started</strong>
 
@@ -173,7 +175,7 @@ class CheckListPatch extends Component {
                         <input 
                             
                             onClick={()=> this.props.updatePipeDriveId({prop:'pipedrive_id',value: pipeDriveApiOne.id})} 
-                            onClick={()=> this.props.checkListPost(this.props.obj)} 
+                            onClick={()=> this.props.checkListPatch(pipeDriveApiOne.id,this.props.obj)} 
                             className="btn btn-default" type="submit" defaultValue="Edit"
                         />
                         </form>
@@ -187,8 +189,7 @@ class CheckListPatch extends Component {
     }
     
     render() {
-        //console.log('Prop history',this.props)
-        //console.log(this.props)
+        console.log('checkListPatch', this.props.dp_info)
         return (
             <div>
                 {this.renderList()}
@@ -196,7 +197,6 @@ class CheckListPatch extends Component {
         );
     }
 }
-//{()=> this.props.updatePipeDriveId(pipeDriveApiOne.id)}
 const mapStateToProps = state => {
     //console.log('state', state.data)
     let {one, pipe} = state.checkList
@@ -245,4 +245,5 @@ export default connect(mapStateToProps, {
     pipeDriveGetRequest,
     pipeDriveGetOne,
     checkListPost,
+    checkListPatch,
 })(CheckListPatch);

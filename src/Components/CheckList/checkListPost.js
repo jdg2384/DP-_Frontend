@@ -34,9 +34,8 @@ class CheckListPost extends Component {
     }
 
     renderList=()=>{
-        console.log(this.props.one.data.org_id)
-        let pipeDriveApiOne = this.props.one.data;
-        if(!pipeDriveApiOne){return <div>Loading...</div>}
+        let pipeInfo = this.props.one.data;
+        if(!pipeInfo){return <div>Loading...</div>}
         else{
             return <div><h1>Workflow</h1>
             <br/><br/>
@@ -44,11 +43,11 @@ class CheckListPost extends Component {
                 <div className="row">
                 <div className="col-lg-4 text-left blah">
                 <div className="" 
-                    onClick={()=> this.props.updatePipeDriveId(pipeDriveApiOne.id)}>
-                    <h4>ID: {pipeDriveApiOne.id}</h4>
-                    <h4>Deal Title: {pipeDriveApiOne.title}</h4>
+                    onClick={()=> this.props.updatePipeDriveId(pipeInfo.id)}>
+                    <h4>ID: {pipeInfo.id}</h4>
+                    <h4>Deal Title: {pipeInfo.title}</h4>
                     {this.renderOrgName()}
-                    <h4>Deal Lead: {pipeDriveApiOne.owner_name}</h4>
+                    <h4>Deal Lead: {pipeInfo.owner_name}</h4>
                 </div>
                 </div>
                 <div className="col-lg-4"></div>
@@ -63,21 +62,21 @@ class CheckListPost extends Component {
                             <h5>Application</h5>
                             <input type="text" className="form-control" 
                                 id="Application" 
-                                value={this.props.application} 
+                                placeholder={'Application'} 
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'application', value: event.target.value })}
                             }/>
                             <h5>Product/Project Name</h5>
                             <input type="text" className="form-control" 
                             id="product_name" 
-                            value={this.props.product_name}
+                            placeholder={'Product/Project Name'}
                             onChange={(event) => { 
                             this.props.updateProperty({prop:'product_name', value: event.target.value })}
                             }/>
                             <h5>cellular Tech</h5>
                             <select className="form-control"
                             id="cellular_tech" 
-                            value={this.props.cellular_tech}
+                            placeholder={this.props.cellular_tech}
                             onChange={(event) => { 
                             this.props.updateProperty({prop:'cellular_tech', value: event.target.value })}
                             }>
@@ -92,7 +91,7 @@ class CheckListPost extends Component {
                             <h5>Cellular Bands</h5>
                             <select className="form-control"
                             id="cellular_bands" 
-                            value={this.props.cellular_bands}
+                            placeholder={this.props.cellular_bands}
                             onChange={(event) => { 
                             this.props.updateProperty({prop:'cellular_bands', value: event.target.value })}
                             }>
@@ -118,22 +117,22 @@ class CheckListPost extends Component {
                             <h5>Organization Name</h5>
                             <input type="text" className="form-control" 
                                 id="org_name" 
-                                value={this.props.org_name}
+                                value={pipeInfo.org_name}
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'org_name', value: event.target.value })}
                             }/>
                             <h5>Lead Person Name</h5>
                             <input type="text" className="form-control" 
                                 id="lead_person"
-                                value={this.props.lead_person}
+                                value={pipeInfo.person_id.name}
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'lead_person', value: event.target.value })}
                             } 
                             />
                             <h5>Lead Person Email</h5>
-                            <input type="email" className="form-control" 
+                            <input type="text" className="form-control" 
                                 id="lead_email" 
-                                value={this.props.lead_email}
+                                value={pipeInfo.person_id.email['0'].value}
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'lead_email', value: event.target.value })}
                             }/>
@@ -179,7 +178,7 @@ class CheckListPost extends Component {
                         </div>
                         <input 
                             
-                            onClick={()=> this.props.updatePipeDriveId({prop:'pipedrive_id',value: pipeDriveApiOne.id})} 
+                            onClick={()=> this.props.updatePipeDriveId({prop:'pipedrive_id',value: pipeInfo.id})} 
                             onClick={()=> this.props.checkListPost(this.props.obj)} 
                             className="btn btn-default" type="submit" defaultValue="Submit"
                         />
@@ -190,12 +189,12 @@ class CheckListPost extends Component {
     </div>
 
         }
-        this.props.updatePipeDriveId(pipeDriveApiOne.id)
+        this.props.updatePipeDriveId(pipeInfo.id)
     }
     
     render() {
         //console.log('Prop history',this.props)
-        //console.log('checkListPost',this.props)
+        console.log('checkListPost',this.props)
         return (
             <div>
                 {this.renderList()}

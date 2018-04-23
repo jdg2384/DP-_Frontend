@@ -40,7 +40,7 @@ class Detail extends Component {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">{item.id}</th>
+                                        <th key={item.id} scope="row">{item.id}</th>
                                         <td>{item.title}</td>
                                         <td>{item.org_name}</td>
                                         <td>{item.stage_order_nr}</td>

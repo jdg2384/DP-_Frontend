@@ -6,3 +6,5 @@ export const CHECKLISTPOST = 'checkListPost';
 export const CHECKLISTGETONE = 'checkListGetOne';
 export const UPDATEPIPEDRIVEID = 'updatePipeDriveId';
 export const DPGETONE = 'dpGetOne';
+export const CHECKLISTPATCH = 'checkListPatch';
+export const UPDATEPROPERTYPATCH = 'updatePropertyPatch'

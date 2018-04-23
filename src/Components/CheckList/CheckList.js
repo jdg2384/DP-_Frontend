@@ -18,6 +18,7 @@ import {
     pipeDriveGetOne,
     checkListGetOne,
     checkListPost,
+    checkListPatch,
 } from '../../Actions';
 
 class CheckList extends Component {
@@ -38,7 +39,7 @@ class CheckList extends Component {
     }
     
     render() {
-        //console.log('checklist', !this.props.dp_info.id)
+        //console.log('checklist', this.props)
         return (
             <div>
                 {this.renderList()}
@@ -94,4 +95,5 @@ export default connect(mapStateToProps, {
     pipeDriveGetRequest,
     pipeDriveGetOne,
     checkListPost,
+    checkListPatch,
 })(CheckList);
