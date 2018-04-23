@@ -74,20 +74,3 @@ export default connect(mapStateToProps, {
   checkListId
 })(Detail);
 
-{/* // products.push({
-//   id: item.id,
-//   title: item.title,
-//   organization: item.org_name,
-//   person: item.owner_name,
-//   stage:item.stage_order_nr,
-// }); */}
-
-{/* <Link to={`/checklist`}>
-    <BootstrapTable onClick={() => this.props.checkListId()} data={ products } striped={ true } hover={ true } >
-        <TableHeaderColumn  dataField='id' isKey={ true }>ID</TableHeaderColumn>
-        <TableHeaderColumn dataField='title'>Title</TableHeaderColumn>
-        <TableHeaderColumn dataField='organization'>Organization</TableHeaderColumn>
-        <TableHeaderColumn dataField='person'>Lead Person</TableHeaderColumn>
-        <TableHeaderColumn dataField='stage'>Stage</TableHeaderColumn>
-    </BootstrapTable>
-</Link> */}

@@ -30,7 +30,7 @@ export const updatePipeDriveId = (value) => {
 
 // Get One Request From DP-
 export const dpGetOne = (id) => {
-  console.log('dpGetOne',id)
+  //console.log('dpGetOne',id)
   return (dispatch) => {
       axios.get('http://localhost:3000/deals/'+id)
       .then(response => response)
@@ -48,6 +48,19 @@ export const dpGetOne = (id) => {
 export const checkListPost = (obj) => {
   return (dispatch) => {
       axios.post(`http://localhost:3000/deals`, obj)
+      .then(function (response) {
+        console.log('check list post',response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+}
+
+// Patch action
+export const checkListPatch = (id,obj) => {
+  return (dispatch) => {
+      axios.post(`http://localhost:3000/deals/`+id, obj)
       .then(function (response) {
         console.log('check list post',response);
       })
