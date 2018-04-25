@@ -8,3 +8,4 @@ export const UPDATEPIPEDRIVEID = 'updatePipeDriveId';
 export const DPGETONE = 'dpGetOne';
 export const CHECKLISTPATCH = 'checkListPatch';
 export const UPDATEPROPERTYPATCH = 'updatePropertyPatch'
+export const UPDATESTATE = 'upDateState'

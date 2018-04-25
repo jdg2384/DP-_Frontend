@@ -8,7 +8,12 @@ CHECKLISTGETONE,
 CHECKLISTPOST,
 CHECKLISTPATCH,
 UPDATEPROPERTYPATCH,
+UPDATESTATE,
 } from './types';
+
+const URL = "https://dp-dash.herokuapp.com/deals/"
+//const URL = "http://localhost:3000/deals/"
+
 
 // Update State CheckListReducer.js
 export const updateProperty = ({ prop, value }) => {
@@ -23,11 +28,11 @@ export const updateProperty = ({ prop, value }) => {
 
 // Update State CheckListReducer.js
 export const updatePropertyPatch = ({ prop, value }) => {
-  console.log('updatePropertyPatch',prop, value)
+  //console.log('Actions value =', value)
   return (dispatch) => {
     dispatch({
       type: UPDATEPROPERTYPATCH,
-      payload: { prop, value }
+      payload: { prop, value } 
     })
   };
 };
@@ -45,7 +50,7 @@ export const updatePipeDriveId = (value) => {
 export const dpGetOne = (id) => {
   //console.log('dpGetOne',id)
   return (dispatch) => {
-      axios.get('https://dp-dash.herokuapp.com/deals/'+id)
+      axios.get(`${URL}`+id)
       .then(response => response)
       .then(data => {
           dispatch({
@@ -56,10 +61,21 @@ export const dpGetOne = (id) => {
   }
 }
 
+export const upDateState = (data) => {
+  //console.log('upDateState',data)
+  return (dispatch) => {
+    dispatch({
+      type: UPDATESTATE,
+      payload: data,
+    });
+  }
+}
+
 // Post action
 export const checkListPost = (obj) => {
+  console.log(obj)
   return (dispatch) => {
-      axios.post(`https://dp-dash.herokuapp.com/deals`, obj)
+      axios.post(`${URL}`, obj)
       .then(function (response) {
         console.log('check list post',response);
       })
@@ -71,9 +87,9 @@ export const checkListPost = (obj) => {
 
 // Patch action
 export const checkListPatch = (id,obj) => {
-   console.log('checkListPatch', id,obj)
+   console.log('checkListPatch', id, obj)
   return (dispatch) => {
-      axios.patch(`https://dp-dash.herokuapp.com/deals/`+id, obj)
+      axios.patch(`${URL}`+id, obj)
       .then(function (response) {
         console.log('check list post',response);
       })

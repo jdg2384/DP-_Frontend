@@ -19,6 +19,7 @@ import {
     checkListGetOne,
     checkListPost,
     checkListPatch,
+    updatePropertyPatch,
 } from '../../Actions';
 
 class CheckList extends Component {
@@ -39,7 +40,7 @@ class CheckList extends Component {
     }
     
     render() {
-        //console.log('checklist', this.props)
+        //console.log('checklist props newObj', this.props.newObj)
         return (
             <div>
                 {this.renderList()}
@@ -48,9 +49,10 @@ class CheckList extends Component {
     }
 }
 const mapStateToProps = state => {
-    //console.log('state', state.data)
+    //console.log('CheckList state', state)
     let {one, pipe} = state.checkList
     let obj = state.data
+    let newObj = state.info
     let {
         dp_info, 
         pipedrive_id,
@@ -83,7 +85,8 @@ const mapStateToProps = state => {
         org_person_email,
         mnda_started,
         mnda_archived,
-        obj
+        obj,
+        newObj
     };
 };
 
@@ -96,4 +99,5 @@ export default connect(mapStateToProps, {
     pipeDriveGetOne,
     checkListPost,
     checkListPatch,
+    updatePropertyPatch,
 })(CheckList);

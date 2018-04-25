@@ -31,7 +31,6 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATEPIPEDRIVEID:
       return{ ...state, pipedrive_id: action.payload};
     case UPDATEPROPERTY:
-    //console.log('reducer',state)
       return { ...state, [action.payload.prop]: action.payload.value };
     case CHECKLISTGETONE:
       return { ...state, checkData: action.payload  };

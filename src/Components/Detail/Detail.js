@@ -27,6 +27,7 @@ class Detail extends Component {
         if(!pipeDriveApi){return <div>Loading...</div>}
         else{
             return pipeDriveApi.map(item => {
+                console.log(item)
             const routeName = item.title.match(/[a-zA-Z]/gi).join('')
                return   <Link to={`/checklist/${routeName}/${item.id}`}>
                             <table class="table">
@@ -43,7 +44,7 @@ class Detail extends Component {
                                         <th key={item.id} scope="row">{item.id}</th>
                                         <td>{item.title}</td>
                                         <td>{item.org_name}</td>
-                                        <td>{item.stage_order_nr}</td>
+                                        <td>{item.stage_id}</td>
                                     </tr>
                                 </tbody>
                             </table>
