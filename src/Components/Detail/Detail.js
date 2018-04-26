@@ -36,6 +36,7 @@ class Detail extends Component {
                             </Link>
                             <td className="tdTitle">{item.title}</td>
                             <td>{item.org_name}</td>
+                            <td>{item.owner_name}</td>
                             <td>{item.stage_id}</td>
                         </tr>
                 )
@@ -52,6 +53,7 @@ class Detail extends Component {
                         <th className="idId">ID</th>
                         <th className="idTitle">Title</th>
                         <th>Organization</th>
+                        <th>Person</th>
                         <th>Stage</th>
                         </tr>
                     </thead>
