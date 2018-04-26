@@ -138,14 +138,6 @@ class CheckListPatch extends Component {
                                 this.props.updatePropertyPatch({prop:'org_person_email', value: event.target.value })}}
                             />
 
-                            {/* <input type="checkbox" 
-                                id="size_viable"
-                                checked={this.props.newObj.size_viable ? "checked" : ""}
-                                value={this.props.newObj.size_viable ? false : true}
-                                onClick={(event) => { 
-                                this.props.updatePropertyPatch({prop:'size_viable', value: event.target.value })}}
-                            /> */}
-
                             <strong>  Organization, Lead Person, and Email are Correct. Ready to Start MNDA Process.</strong>
                             <br/><br/>
                             <h5><strong>Manual Steps</strong></h5>
@@ -158,23 +150,22 @@ class CheckListPatch extends Component {
                             <br/><br/>
                             
                             <input type="checkbox" 
-                                id="cmnda_started"
-                                blah={dp.mnda_started ? "checked" : ""}
+                                id="mnda_started"
+                                checked={this.props.newObj.mnda_started ? "checked" : ""}
+                                value={this.props.newObj.mnda_started ? false : true}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'mnda_started', value: event.target.value })}}
-                                defaultValue={dp.mnda_started ? false : true}
                             />
                             <strong>  MNDA Process Has Been Started</strong>
-
                             
                             
                             <h2>Archive MNDA (Legal Admin)</h2>
                             <input type="checkbox" 
                                 id="mnda_archived"
-                                blah={this.props.mnda_archived ? "checked" : ""}
+                                checked={this.props.newObj.mnda_archived ? "checked" : ""}
+                                value={this.props.newObj.mnda_archived ? false : true}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'mnda_archived', value: event.target.value })}}
-                                value={this.props.mnda_archived ? false : true}
                             />
                             <strong>  MNDA Has Been Archived</strong>
                         </div>
