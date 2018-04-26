@@ -14,7 +14,6 @@ import {
     checkListId,
     pipeDriveGetRequest,
     pipeDriveGetOne,
-    checkListGetOne,
     checkListPost,
 } from '../../Actions';
 
@@ -193,8 +192,6 @@ class CheckListPost extends Component {
     }
     
     render() {
-        //console.log('Prop history',this.props)
-        console.log('checkListPost',this.props)
         return (
             <div>
                 {this.renderList()}

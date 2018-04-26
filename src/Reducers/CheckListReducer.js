@@ -2,7 +2,6 @@
 import {
   UPDATEPIPEDRIVEID,
   UPDATEPROPERTY,
-  CHECKLISTGETONE,
   DPGETONE
 } from '../Actions/types';
   
@@ -32,8 +31,6 @@ export default (state = INITIAL_STATE, action) => {
       return{ ...state, pipedrive_id: action.payload};
     case UPDATEPROPERTY:
       return { ...state, [action.payload.prop]: action.payload.value };
-    case CHECKLISTGETONE:
-      return { ...state, checkData: action.payload  };
     default:
       return state;
   }

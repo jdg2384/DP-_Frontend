@@ -25,8 +25,10 @@ class Detail extends Component {
         let pipeDriveApi = this.props.pipe.pipe.data;
         if(!pipeDriveApi){return <div>Loading...</div>}
         else{
+            
             return pipeDriveApi.map(item => {
-                const routeName = item.title.match(/[a-zA-Z]/gi).join('')
+                if(item.stage_id === 1 || item.stage_id === 2 || item.stage_id === 3 || item.stage_id === 4 ){
+                    const routeName = item.title.match(/[a-zA-Z]/gi).join('')
                 return(  
                         <tr className="text-left" key={item.id}>
                             <Link to={`/checklist/${routeName}/${item.id}`}>
@@ -37,6 +39,7 @@ class Detail extends Component {
                             <td>{item.stage_id}</td>
                         </tr>
                 )
+                }
             })
         }
     }
@@ -71,33 +74,4 @@ export default connect(mapStateToProps, {
   checkListId
 })(Detail);
 
-<Table striped bordered condensed hover>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</Table>;
 

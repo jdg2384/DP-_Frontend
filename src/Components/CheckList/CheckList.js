@@ -16,7 +16,6 @@ import {
     checkListId,
     pipeDriveGetRequest,
     pipeDriveGetOne,
-    checkListGetOne,
     checkListPost,
     checkListPatch,
     updatePropertyPatch,

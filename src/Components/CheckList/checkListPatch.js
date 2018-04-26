@@ -14,7 +14,6 @@ import {
     checkListId,
     pipeDriveGetRequest,
     pipeDriveGetOne,
-    checkListGetOne,
     checkListPost,
     checkListPatch,
     updatePropertyPatch,
@@ -94,12 +93,13 @@ class CheckListPatch extends Component {
                             </select>
                             
                             <br/><br/>
+                            {/* CHECKBOX */}
                             <input type="checkbox" 
                                 id="size_viable"
-                                checked={this.props.size_viable ? "checked" : ""}
+                                checked={this.props.newObj.size_viable ? "checked" : ""}
+                                value={this.props.newObj.size_viable ? false : true}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'size_viable', value: event.target.value })}}
-                                value={this.props.newObj ? false : true}
                             />
 
                             <strong> Size Viable for Chosen Bands</strong>
@@ -129,6 +129,7 @@ class CheckListPatch extends Component {
                                 this.props.updatePropertyPatch({prop:'lead_email', value: event.target.value })}
                             }/>
                             <br/><br/>
+                             {/* CHECKBOX */}
                             <input type="checkbox" 
                                 id="org_person_email"
                                 test={this.props.org_person_email ? "checked" : ""}
@@ -185,8 +186,9 @@ class CheckListPatch extends Component {
     }
     
     render() {
-        console.log('checkListPatch', this.props.newObj
-    )
+        console.log('Size Viable', this.props.dp_info.size_viable)
+        console.log('Size Viable newobj', this.props.newObj.size_viable)
+  
         return (
             <div>
                 {this.renderList()}

@@ -4,15 +4,14 @@ import {
 DPGETONE,
 UPDATEPIPEDRIVEID,
 UPDATEPROPERTY,
-CHECKLISTGETONE,
 CHECKLISTPOST,
 CHECKLISTPATCH,
 UPDATEPROPERTYPATCH,
 UPDATESTATE,
 } from './types';
 
-const URL = "https://dp-dash.herokuapp.com/deals/"
-//const URL = "http://localhost:3000/deals/"
+//const URL = "https://dp-dash.herokuapp.com/deals/"
+const URL = "http://localhost:3000/deals/"
 
 
 // Update State CheckListReducer.js
