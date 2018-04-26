@@ -28,11 +28,11 @@ class Detail extends Component {
             return pipeDriveApi.map(item => {
                 const routeName = item.title.match(/[a-zA-Z]/gi).join('')
                 return(  
-                        <tr key={item.id}>
+                        <tr className="text-left" key={item.id}>
                             <Link to={`/checklist/${routeName}/${item.id}`}>
-                                <td>{item.id}</td> 
+                                <td className="tdId">{item.id}</td> 
                             </Link>
-                            <td>{item.title}</td>
+                            <td className="tdTitle">{item.title}</td>
                             <td>{item.org_name}</td>
                             <td>{item.stage_id}</td>
                         </tr>
@@ -44,10 +44,10 @@ class Detail extends Component {
     render() {
         return (
                 <Table striped bordered condensed hover>
-                    <thead className="tableHeader">
+                    <thead>
                         <tr>
-                        <th>ID</th>
-                        <th>Title</th>
+                        <th className="idId">ID</th>
+                        <th className="idTitle">Title</th>
                         <th>Organization</th>
                         <th>Stage</th>
                         </tr>

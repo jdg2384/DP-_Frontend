@@ -14,3 +14,12 @@ thead {
 tbody{
     height: 785px;
 }
+.tdId{
+    width: 100px;
+}
+.idTitle{
+    width: 50%;
+}
+.tdTitle{
+    width: 50%;
+}
