@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Table } from 'react-bootstrap';
+import './Detail.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import 'font-awesome/css/font-awesome.css';
@@ -44,7 +45,7 @@ class Detail extends Component {
     render() {
         return (
                 <Table striped bordered condensed hover>
-                    <thead>
+                    <thead className="tableHeader">
                         <tr>
                         <th>ID</th>
                         <th>Title</th>
