@@ -132,11 +132,20 @@ class CheckListPatch extends Component {
                              {/* CHECKBOX */}
                             <input type="checkbox" 
                                 id="org_person_email"
-                                test={this.props.org_person_email ? "checked" : ""}
+                                checked={this.props.newObj.org_person_email ? "checked" : ""}
+                                value={this.props.newObj.org_person_email ? false : true}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'org_person_email', value: event.target.value })}}
-                                defaultValue={dp.org_person_email ? false : true}
                             />
+
+                            {/* <input type="checkbox" 
+                                id="size_viable"
+                                checked={this.props.newObj.size_viable ? "checked" : ""}
+                                value={this.props.newObj.size_viable ? false : true}
+                                onClick={(event) => { 
+                                this.props.updatePropertyPatch({prop:'size_viable', value: event.target.value })}}
+                            /> */}
+
                             <strong>  Organization, Lead Person, and Email are Correct. Ready to Start MNDA Process.</strong>
                             <br/><br/>
                             <h5><strong>Manual Steps</strong></h5>

@@ -16,7 +16,6 @@ const URL = "https://dp-dash.herokuapp.com/deals/"
 
 // Update State CheckListReducer.js
 export const updateProperty = ({ prop, value }) => {
-  //console.log('updatePipeDriveId',prop, value)
   return (dispatch) => {
     dispatch({
       type: UPDATEPROPERTY,
@@ -27,7 +26,6 @@ export const updateProperty = ({ prop, value }) => {
 
 // Update State CheckListReducer.js
 export const updatePropertyPatch = ({ prop, value }) => {
-  //console.log('Actions value =', value)
   return (dispatch) => {
     dispatch({
       type: UPDATEPROPERTYPATCH,
@@ -38,7 +36,6 @@ export const updatePropertyPatch = ({ prop, value }) => {
 
 // Update State CheckListReducer.js
 export const updatePipeDriveId = (value) => {
-  //console.log('updatePipeDriveId', value)
     return  {
         type: UPDATEPIPEDRIVEID,
         payload: value, 
@@ -47,7 +44,6 @@ export const updatePipeDriveId = (value) => {
 
 // Get One Request From DP-
 export const dpGetOne = (id) => {
-  //console.log('dpGetOne',id)
   return (dispatch) => {
       axios.get(`${URL}`+id)
       .then(response => response)
@@ -61,7 +57,6 @@ export const dpGetOne = (id) => {
 }
 
 export const upDateState = (data) => {
-  //console.log('upDateState',data)
   return (dispatch) => {
     dispatch({
       type: UPDATESTATE,
