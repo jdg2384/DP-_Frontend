@@ -17,11 +17,8 @@ class App extends Component {
       <Router>
         <div className="App">
             <header className="App-header">
-              <h1 className="App-title">DP- Dashboard</h1>
+              <h1 className="App-title">Qualified Deals</h1>
             </header>
-            {/* <li><Link to="/checklist">CheckList</Link></li> */}
-            {/* <DetailList/> */}
-            {/* <CheckList/> */}
             <Route exact path="/" component={DetailList}/>
             <Route path="/checklist" component={CheckList}/>
         </div> 

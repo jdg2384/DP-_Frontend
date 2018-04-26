@@ -95,11 +95,11 @@ class CheckListPatch extends Component {
                             
                             <br/><br/>
                             <input type="checkbox" 
-                                id="cellular_bands"
-                                blah={dp.size_viable ? "checked" : ""}
+                                id="size_viable"
+                                checked={this.props.size_viable ? "checked" : ""}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'size_viable', value: event.target.value })}}
-                                value={dp.size_viable ? false : true}
+                                value={this.props.newObj ? false : true}
                             />
 
                             <strong> Size Viable for Chosen Bands</strong>
@@ -185,7 +185,8 @@ class CheckListPatch extends Component {
     }
     
     render() {
-        console.log('checkListPatch', this.props.newObj)
+        console.log('checkListPatch', this.props.newObj
+    )
         return (
             <div>
                 {this.renderList()}

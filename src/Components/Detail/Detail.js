@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { Button, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import 'font-awesome/css/font-awesome.css';
@@ -15,7 +15,6 @@ import {
   pipeDriveGetRequest,
   checkListId
 } from '../../Actions';
-const products = [];
 class Detail extends Component {
     componentDidMount() {
         this.props.pipeDriveGetRequest()
@@ -27,45 +26,42 @@ class Detail extends Component {
         if(!pipeDriveApi){return <div>Loading...</div>}
         else{
             return pipeDriveApi.map(item => {
-                console.log(item)
-            const routeName = item.title.match(/[a-zA-Z]/gi).join('')
-               return   <Link to={`/checklist/${routeName}/${item.id}`}>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">id</th>
-                                        <th scope="col">title</th>
-                                        <th scope="col">Organization</th>
-                                        <th scope="col">Stage</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th key={item.id} scope="row">{item.id}</th>
-                                        <td>{item.title}</td>
-                                        <td>{item.org_name}</td>
-                                        <td>{item.stage_id}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </Link>
+                const routeName = item.title.match(/[a-zA-Z]/gi).join('')
+                return(  
+                        <tr key={item.id}>
+                            <Link to={`/checklist/${routeName}/${item.id}`}>
+                                <td>{item.id}</td> 
+                            </Link>
+                            <td>{item.title}</td>
+                            <td>{item.org_name}</td>
+                            <td>{item.stage_id}</td>
+                        </tr>
+                )
             })
         }
     }
     
     render() {
-        console.log('Detail props', this.props.checkListId)
         return (
-            <div>
-                {this.renderList()}
-            </div>
-        );
-    }
+                <Table striped bordered condensed hover>
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Organization</th>
+                        <th>Stage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderList()}
+                    </tbody>
+                </Table>
+            );
+        }
 }
 
 const mapStateToProps = state => {
   let pipe = state.checkList
-  console.log(pipe)
   let checkId = state.checkList
   return { pipe, checkId} ;
 };
@@ -74,4 +70,34 @@ export default connect(mapStateToProps, {
   pipeDriveGetRequest,
   checkListId
 })(Detail);
+
+<Table striped bordered condensed hover>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td colSpan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</Table>;
 
