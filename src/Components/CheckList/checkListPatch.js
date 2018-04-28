@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // CSS
+import { Checkbox } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import 'font-awesome/css/font-awesome.css';
@@ -21,7 +22,18 @@ import {
 
 class CheckListPatch extends Component {
     
-    renderList=()=>{
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log('this state = ', this.props.newObj.size_viable)
+    //     console.log('next props ==>', nextProps.newObj.size_viable)
+    //     // console.log('key',this.props.newObj.size_viable == nextProps.newObj.size_viable)
+    //     return this.props.newObj.size_viable !== nextProps.newObj.size_viable
+    // //    retrun this.props.newObj.size_viable !== nextProps.newObj.size_viable
+    // //        this.forceUpdate()
+    // //    } 
+      
+    // }
+    
+    renderList=(props)=>{
         let pipeInfo = this.props.one.data;
         let pipeDriveApiOne = this.props.one.data;
         let dp = this.props.dp_info;
@@ -94,14 +106,14 @@ class CheckListPatch extends Component {
                             
                             <br/><br/>
                             {/* CHECKBOX */}
-                            <input type="checkbox" 
+                            <Checkbox  
                                 id="size_viable"
-                                checked={this.props.newObj.size_viable ? "checked" : ""}
-                                value={this.props.newObj.size_viable ? false : true}
-                                onClick={(event) => { 
-                                this.props.updatePropertyPatch({prop:'size_viable', value: event.target.value })}}
+                                defaultChecked={this.props.newObj.size_viable}
+                                onChange={(event)=> {console.log('event target checked', 
+                                event.target.checked), this.props.checkListPatch(pipeDriveApiOne.id, 
+                                {'size_viable': event.target.checked })}}
                             />
-
+                                   
                             <strong> Size Viable for Chosen Bands</strong>
                             <h1>Opportunity</h1>
                             <h2>Start MNDA Process (Sales)</h2>
@@ -132,8 +144,8 @@ class CheckListPatch extends Component {
                              {/* CHECKBOX */}
                             <input type="checkbox" 
                                 id="org_person_email"
-                                checked={this.props.newObj.org_person_email ? "checked" : ""}
-                                value={this.props.newObj.org_person_email ? false : true}
+                                defaultcheckeddd={this.props.newObj.org_person_email ? "checked" : ""}
+                                defaultValue={this.props.newObj.org_person_email ? false : true}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'org_person_email', value: event.target.value })}}
                             />
@@ -151,7 +163,7 @@ class CheckListPatch extends Component {
                             
                             <input type="checkbox" 
                                 id="mnda_started"
-                                checked={this.props.newObj.mnda_started ? "checked" : ""}
+                                defaultcheckedd={this.props.newObj.mnda_started ? "checked" : ""}
                                 value={this.props.newObj.mnda_started ? false : true}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'mnda_started', value: event.target.value })}}
@@ -162,7 +174,7 @@ class CheckListPatch extends Component {
                             <h2>Archive MNDA (Legal Admin)</h2>
                             <input type="checkbox" 
                                 id="mnda_archived"
-                                checked={this.props.newObj.mnda_archived ? "checked" : ""}
+                                defaultcheckedd={this.props.newObj.mnda_archived ? "checked" : ""}
                                 value={this.props.newObj.mnda_archived ? false : true}
                                 onClick={(event) => { 
                                 this.props.updatePropertyPatch({prop:'mnda_archived', value: event.target.value })}}
@@ -172,7 +184,7 @@ class CheckListPatch extends Component {
                         <input 
                             
                             onClick={()=> this.props.updatePipeDriveId({prop:'pipedrive_id',value: pipeDriveApiOne.id})} 
-                            onClick={()=> this.props.checkListPatch(pipeDriveApiOne.id,this.props.newObj)} 
+                            //onClick={()=> this.props.checkListPatch(pipeDriveApiOne.id,this.props.newObj)} 
                             className="btn btn-default" type="submit" defaultValue="Edit"
                         />
                         </form>
@@ -182,13 +194,11 @@ class CheckListPatch extends Component {
     </div>
 
         }
-        this.props.updatePipeDriveId(pipeDriveApiOne.id)
+        //this.props.updatePipeDriveId(pipeDriveApiOne.id)
     }
     
     render() {
-        console.log('Size Viable', this.props.dp_info.size_viable)
-        console.log('Size Viable newobj', this.props.newObj.size_viable)
-  
+        console.log('newObj.size_viable',this.props.newObj.size_viable)
         return (
             <div>
                 {this.renderList()}

@@ -10,8 +10,8 @@ UPDATEPROPERTYPATCH,
 UPDATESTATE,
 } from './types';
 
-const URL = "https://dp-dash.herokuapp.com/deals/"
-//const URL = "http://localhost:3000/deals/"
+//const URL = "https://dp-dash.herokuapp.com/deals/"
+const URL = "http://localhost:3000/deals/"
 
 
 // Update State CheckListReducer.js
@@ -81,7 +81,10 @@ export const checkListPost = (obj) => {
 
 // Patch action
 export const checkListPatch = (id,obj) => {
-   console.log('checkListPatch', id, obj)
+  //  console.log('checkListPatch on "', obj.size_viable)
+  //   if(obj.size_viable === 'on') obj.size_viable = true
+  //     console.log('checkListPatch', obj.size_viable)
+  //   if(obj.size_viable === '') obj.size_viable = false
   return (dispatch) => {
       axios.patch(`${URL}`+id, obj)
       .then(function (response) {

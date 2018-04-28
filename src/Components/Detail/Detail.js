@@ -27,7 +27,8 @@ class Detail extends Component {
         else{
             
             return pipeDriveApi.map(item => {
-                if(item.stage_id === 1 || item.stage_id === 2 || item.stage_id === 3 || item.stage_id === 4 ){
+                console.log(item)
+                if(item.stage_id === 2 || item.stage_id === 3 || item.stage_id === 4 ){
                     const routeName = item.title.match(/[a-zA-Z]/gi).join('')
                 return(  
                         <tr className="text-left" key={item.id}>
@@ -36,6 +37,7 @@ class Detail extends Component {
                             </Link>
                             <td className="tdTitle">{item.title}</td>
                             <td>{item.org_name}</td>
+                            <td>{item.person_name}</td>
                             <td>{item.owner_name}</td>
                             <td>{item.stage_id}</td>
                         </tr>
@@ -53,7 +55,8 @@ class Detail extends Component {
                         <th className="idId">ID</th>
                         <th className="idTitle">Title</th>
                         <th>Organization</th>
-                        <th>Person</th>
+                        <th>Lead Person</th>
+                        <th>Sales Person</th>
                         <th>Stage</th>
                         </tr>
                     </thead>

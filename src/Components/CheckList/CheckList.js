@@ -39,7 +39,6 @@ class CheckList extends Component {
     }
     
     render() {
-        //console.log('checklist props newObj', this.props.newObj)
         return (
             <div>
                 {this.renderList()}
@@ -48,7 +47,6 @@ class CheckList extends Component {
     }
 }
 const mapStateToProps = state => {
-    //console.log('CheckList state', state)
     let {one, pipe} = state.checkList
     let obj = state.data
     let newObj = state.info
