@@ -35,8 +35,9 @@ class CheckListPatch extends Component {
     
     renderList=(props)=>{
         let pipeInfo = this.props.one.data;
-        let pipeDriveApiOne = this.props.one.data;
+        let pipeDriveApiOne = this.props.one; //this.props.one.data
         let dp = this.props.dp_info;
+        console.log('dp',dp)
         if(!pipeDriveApiOne){return <div>Loading...</div>}
         else{
             //this.props.updatePropertyPatch(this.props.dp_info)
@@ -49,7 +50,8 @@ class CheckListPatch extends Component {
                     onClick={()=> this.props.updatePipeDriveId(pipeDriveApiOne.id)}>
                     <h4>ID: {pipeDriveApiOne.id}</h4>
                     <h4>Deal Title: {pipeDriveApiOne.title}</h4>
-                    <h4>Organization: {pipeDriveApiOne.org_id.name}</h4>
+                    {/* pipeDriveApiOne.org_id.name */}
+                    <h4>Organization: {pipeDriveApiOne.org_name}</h4>
                     <h4>Deal Lead: {pipeDriveApiOne.owner_name}</h4>
                 </div>
                 </div>
@@ -67,21 +69,21 @@ class CheckListPatch extends Component {
                                 id="Application" 
                                 defaultValue={dp.application} 
                                 onChange={(event) => { 
-                                this.props.updatePropertyPatch({prop:'application', value: event.target.value })}
+                                this.props.checkListPatch(pipeDriveApiOne.id,{'application': event.target.value })}
                             }/>
                             <h5>Product/Project Name</h5>
                             <input type="text" className="form-control" 
                             id="product_name" 
                             defaultValue={dp.product_name}
                             onChange={(event) => { 
-                            this.props.updatePropertyPatch({prop:'product_name', value: event.target.value })}
+                            this.props.checkListPatch(pipeDriveApiOne.id,{'product_name': event.target.value })}
                             }/>
                             <h5>cellular Tech</h5>
                             <select className="form-control"
                             id="cellular_tech" 
                             defaultValue={dp.cellular_tech}
                             onChange={(event) => { 
-                            this.props.updatePropertyPatch({prop:'cellular_tech', value: event.target.value })}
+                            this.props.checkListPatch(pipeDriveApiOne.id,{'cellular_tech': event.target.value })}
                             }>
                                 <option>LTE CAT-1 Single Antenna</option>
                                 <option>LTE CAT-1 Dual Antenna</option>
@@ -96,7 +98,7 @@ class CheckListPatch extends Component {
                             id="cellular_bands" 
                             defaultValue={dp.cellular_bands}
                             onChange={(event) => { 
-                            this.props.updatePropertyPatch({prop:'cellular_bands', value: event.target.value })}
+                            this.props.checkListPatch(pipeDriveApiOne.id,{'cellular_bands': event.target.value })}
                             }>
                                 <option>ATT/Tmobile (PTCRB)</option>
                                 <option>Verizon</option>
@@ -105,8 +107,9 @@ class CheckListPatch extends Component {
                             </select>
                             
                             <br/><br/>
-                            {/* CHECKBOX */}
-                            <Checkbox  
+                            {/* CHECKBOX Size Viable*/}
+                            <input 
+                                type="checkbox" 
                                 id="size_viable"
                                 defaultChecked={this.props.newObj.size_viable}
                                 onChange={(event)=> {console.log('event target checked', 
@@ -123,31 +126,29 @@ class CheckListPatch extends Component {
                                 id="org_name" 
                                 defaultValue={dp.org_name}
                                 onChange={(event) => { 
-                                this.props.updatePropertyPatch({prop:'org_name', value: event.target.value })}
+                                this.props.checkListPatch(pipeDriveApiOne.id,{'org_name': event.target.value })}
                             }/>
                             <h5>Lead Person Name</h5>
                             <input type="text" className="form-control" 
                                 id="lead_person"
                                 defaultValue={dp.lead_person}
                                 onChange={(event) => { 
-                                this.props.updatePropertyPatch({prop:'lead_person', value: event.target.value })}
+                                this.props.checkListPatch(pipeDriveApiOne.id,{'lead_person': event.target.value })}
                             } 
                             />
                             <h5>Lead Person Email</h5>
                             <input type="email" className="form-control" 
                                 id="lead_email" 
                                 defaultValue={dp.lead_email}
-                                onChange={(event) => { 
-                                this.props.updatePropertyPatch({prop:'lead_email', value: event.target.value })}
+                                onChange={(event) => {console.log('event target checked', event.target.value),this.props.checkListPatch(pipeDriveApiOne.id,{'lead_email': event.target.value })}
                             }/>
                             <br/><br/>
-                             {/* CHECKBOX */}
-                            <input type="checkbox" 
+                            {/* CHECKBOX */}
+                            <input 
+                                type="checkbox" 
                                 id="org_person_email"
-                                defaultcheckeddd={this.props.newObj.org_person_email ? "checked" : ""}
-                                defaultValue={this.props.newObj.org_person_email ? false : true}
-                                onClick={(event) => { 
-                                this.props.updatePropertyPatch({prop:'org_person_email', value: event.target.value })}}
+                                defaultChecked={this.props.newObj.org_person_email}
+                                onChange={(event)=> {console.log('event target checked', event.target.checked), this.props.checkListPatch(pipeDriveApiOne.id,{'org_person_email': event.target.checked })}}
                             />
 
                             <strong>  Organization, Lead Person, and Email are Correct. Ready to Start MNDA Process.</strong>
@@ -160,33 +161,36 @@ class CheckListPatch extends Component {
                                 <li><h5>Change Doc Title Field to Legal Name</h5></li>
                             </ol>
                             <br/><br/>
-                            
-                            <input type="checkbox" 
+                            {/* CHECKBOX MNDA STARTED */}
+                            <input 
+                                type="checkbox" 
                                 id="mnda_started"
-                                defaultcheckedd={this.props.newObj.mnda_started ? "checked" : ""}
-                                value={this.props.newObj.mnda_started ? false : true}
-                                onClick={(event) => { 
-                                this.props.updatePropertyPatch({prop:'mnda_started', value: event.target.value })}}
+                                defaultChecked={this.props.newObj.mnda_started}
+                                onChange={(event)=> {console.log('event target checked', 
+                                event.target.checked), this.props.checkListPatch(pipeDriveApiOne.id, 
+                                {'mnda_started': event.target.checked })}}
                             />
                             <strong>  MNDA Process Has Been Started</strong>
                             
                             
                             <h2>Archive MNDA (Legal Admin)</h2>
-                            <input type="checkbox" 
+                            {/* CHECKBOX MNDA STARTED */}
+                            <input 
+                                type="checkbox" 
                                 id="mnda_archived"
-                                defaultcheckedd={this.props.newObj.mnda_archived ? "checked" : ""}
-                                value={this.props.newObj.mnda_archived ? false : true}
-                                onClick={(event) => { 
-                                this.props.updatePropertyPatch({prop:'mnda_archived', value: event.target.value })}}
+                                defaultChecked={this.props.newObj.mnda_archived}
+                                onChange={(event)=> {console.log('event target checked', 
+                                event.target.checked), this.props.checkListPatch(pipeDriveApiOne.id, 
+                                {'mnda_archived': event.target.checked })}}
                             />
                             <strong>  MNDA Has Been Archived</strong>
                         </div>
-                        <input 
+                        {/* <input 
                             
                             onClick={()=> this.props.updatePipeDriveId({prop:'pipedrive_id',value: pipeDriveApiOne.id})} 
-                            //onClick={()=> this.props.checkListPatch(pipeDriveApiOne.id,this.props.newObj)} 
+                            onClick={()=> this.props.checkListPatch(pipeDriveApiOne.id,this.props.newObj)} 
                             className="btn btn-default" type="submit" defaultValue="Edit"
-                        />
+                        /> */}
                         </form>
                     </div>
                 </div>

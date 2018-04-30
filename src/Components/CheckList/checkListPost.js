@@ -27,13 +27,14 @@ class CheckListPost extends Component {
     // }
 
     renderOrgName=()=> {
-        let pipeOrgName = this.props.one.data.org_id;
+        let pipeOrgName = this.props.one.org_id;//one.data.org-name
         if(pipeOrgName == null){return <h4>Organization: N/A</h4>}
         else{return <h4>Organization: {pipeOrgName.name}</h4>}
     }
 
     renderList=()=>{
-        let pipeInfo = this.props.one.data;
+        let pipeInfo = this.props.one;
+        //console.log('Check List post ', this.props.one) // .data
         if(!pipeInfo){return <div>Loading...</div>}
         else{
             return <div><h1>Workflow</h1>
@@ -123,7 +124,7 @@ class CheckListPost extends Component {
                             <h5>Lead Person Name</h5>
                             <input type="text" className="form-control" 
                                 id="lead_person"
-                                value={pipeInfo.person_id.name}
+                                value={pipeInfo.person_name}//person_id.name
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'lead_person', value: event.target.value })}
                             } 
@@ -131,7 +132,7 @@ class CheckListPost extends Component {
                             <h5>Lead Person Email</h5>
                             <input type="text" className="form-control" 
                                 id="lead_email" 
-                                value={pipeInfo.person_id.email['0'].value}
+                                value={pipeInfo.person_email}//pipeInfo.person_id.email['0'].value
                                 onChange={(event) => { 
                                 this.props.updateProperty({prop:'lead_email', value: event.target.value })}
                             }/>

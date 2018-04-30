@@ -14,6 +14,7 @@ UPDATESTATE,
 const URL = "http://localhost:3000/deals/"
 
 
+
 // Update State CheckListReducer.js
 export const updateProperty = ({ prop, value }) => {
   return (dispatch) => {

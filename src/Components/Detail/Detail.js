@@ -22,12 +22,12 @@ class Detail extends Component {
     }
     renderList=()=>{
         // Pipedrive Api request object
-        let pipeDriveApi = this.props.pipe.pipe.data;
+        let pipeDriveApi = this.props.pipe.pipe; //PIPEDRIVE API this.props.pipe.pipe.data
+        //console.log('detail this.props', this.props.pipe.pipe)
         if(!pipeDriveApi){return <div>Loading...</div>}
         else{
             
             return pipeDriveApi.map(item => {
-                console.log(item)
                 if(item.stage_id === 2 || item.stage_id === 3 || item.stage_id === 4 ){
                     const routeName = item.title.match(/[a-zA-Z]/gi).join('')
                 return(  

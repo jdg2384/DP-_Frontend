@@ -20,7 +20,6 @@ import {
     checkListPatch,
     updatePropertyPatch,
 } from '../../Actions';
-
 class CheckList extends Component {
     componentDidMount() {
         const urlPath = this.props.history.location.pathname.match(/[0-9]/gi).join('');
@@ -31,9 +30,10 @@ class CheckList extends Component {
     }
 
     renderList=()=>{
-        let pipeDriveApiOne = this.props.one.data;
+    
+        let pipeDriveApiOne = this.props.one; // PIPEDRIVE this.props.one.data
         if(!pipeDriveApiOne){return <div>Loading...</div>}
-        else if (!this.props.dp_info.id){return <CheckListPost/>}
+        else if (!this.props.dp_info.id){{console.log('checking something',this.props)}return <CheckListPost/>}
         else{return<CheckListPatch/>}
         this.props.updatePipeDriveId(pipeDriveApiOne.id)
     }
